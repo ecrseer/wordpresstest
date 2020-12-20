@@ -17,6 +17,17 @@ function someth_ing($content){
         return $content . '<p>textosinho em</p>';
     }
 }
-
-
 add_filter( 'the_content', 'someth_ing' );
+
+function log_wsaved($id_post){
+    $post_log = get_stylesheet_directory() . '/post_log.txt';
+    $msg = get_the_content() . ' na data de ' . get_the_date();
+
+      if(file_exists($post_log))
+        $fs = fopen($post_log,'a');
+}
+
+add_action('save_post','log_wsaved')
+
+
+
